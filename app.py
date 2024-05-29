@@ -5,24 +5,14 @@ import aws_cdk as cdk
 
 from cdk_2_accounts.cdk_2_accounts_stack import Cdk2AccountsStack
 
+# dev account:aws profile RobRoosDEV
+dev = cdk.Environment(account='999592371459', region='us-east-1')
+
+# DCT-PRODUCTION
+prod = cdk.Environment(account='024530078564', region='us-east-1')
 
 app = cdk.App()
-Cdk2AccountsStack(app, "Cdk2AccountsStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
-
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
-
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+Cdk2AccountsStack(app, "Cdk2AccountsStack-dev",env=dev,prod_env=False)
+Cdk2AccountsStack(app, "Cdk2AccountsStack-prd",env=prod,prod_env=True)
 
 app.synth()
