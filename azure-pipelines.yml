@@ -12,6 +12,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+  
+- task: NodeTool@0
+  inputs:
+    versionSpec: '22.0.0'
+
+- script: |
+    cd cdk-code
+    echo "Installing packages"
+    sudo npm install -g aws-cdk
+    #sudo gem install cfn-nag  
+    pip install -r requirements.txt  # otherwise error: ModuleNotFoundError: No module named 'aws_cdk'
+  displayName: 'Installing aws cdk'
+
 - task: AWSCLI@1
   inputs:
     awsCredentials: 'my-aws-account-cdk-2-accounts' # shared from serv.conn: 'my-aws-account' # iam user azuredevops in master account
