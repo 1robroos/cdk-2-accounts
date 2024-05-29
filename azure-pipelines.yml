@@ -15,7 +15,7 @@ steps:
 - task: AWSCLI@1
   inputs:
     awsCredentials: 'my-aws-account-cdk-2-accounts' # shared from serv.conn: 'my-aws-account' # iam user azuredevops in master account
-    regionName: 'eu-central-1'
+    regionName: 'us-east-1'
     awsCommand: 'sts'
     awsSubCommand: 'get-caller-identity'
   displayName: 'aws sts test3'
@@ -26,6 +26,16 @@ steps:
 #     "Arn": "arn:aws:iam::969526043371:user/azuredevops"
 # }
 
+
+- task: AWSShellScript@1
+  inputs:
+    awsCredentials: 'my-aws-account-cdk-2-accounts'
+    regionName: 'us-east-1'
+    scriptType: 'inline'
+    inlineScript: |
+      echo "Running cdk ls"
+      cdk ls
+  displayName: 'list cdk ls'
 
 # - task: AWSShellScript@1
 #   inputs:
