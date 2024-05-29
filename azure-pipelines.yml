@@ -14,7 +14,7 @@ pool:
 steps:
 - task: AWSCLI@1
   inputs:
-    awsCredentials: 'my-aws-account' # iam user azuredevops in master account
+    awsCredentials: 'my-aws-account-cdk-2-accounts' # shared from serv.conn: 'my-aws-account' # iam user azuredevops in master account
     regionName: 'eu-central-1'
     awsCommand: 'sts'
     awsSubCommand: 'get-caller-identity'
