@@ -14,21 +14,21 @@ pool:
 steps:
 
   
-- task: NodeTool@0
-  inputs:
-    versionSpec: '22.0.0'
+# - task: NodeTool@0
+#   inputs:
+#     versionSpec: '22.0.0'
 
-- script: |
-    cd cdk-code
-    echo "Installing packages"
-    sudo npm install -g aws-cdk
-    #sudo gem install cfn-nag  
-    pip install -r requirements.txt  # otherwise error: ModuleNotFoundError: No module named 'aws_cdk'
-  displayName: 'Installing aws cdk'
+# - script: |
+#     cd cdk-code
+#     echo "Installing packages"
+#     sudo npm install -g aws-cdk
+#     #sudo gem install cfn-nag  
+#     pip install -r requirements.txt  # otherwise error: ModuleNotFoundError: No module named 'aws_cdk'
+#   displayName: 'Installing aws cdk'
 
 - task: AWSCLI@1
   inputs:
-    awsCredentials: 'my-aws-account-cdk-2-accounts' # shared from serv.conn: 'my-aws-account' # iam user azuredevops in master account
+    awsCredentials: 'ADO-test-this-account' # 'my-aws-account-cdk-2-accounts' # shared from serv.conn: 'my-aws-account' # iam user azuredevops in master account
     regionName: 'us-east-1'
     awsCommand: 'sts'
     awsSubCommand: 'get-caller-identity'
@@ -41,15 +41,15 @@ steps:
 # }
 
 
-- task: AWSShellScript@1
-  inputs:
-    awsCredentials: 'my-aws-account-cdk-2-accounts'
-    regionName: 'us-east-1'
-    scriptType: 'inline'
-    inlineScript: |
-      echo "Running cdk ls"
-      cdk ls
-  displayName: 'list cdk ls'
+# - task: AWSShellScript@1
+#   inputs:
+#     awsCredentials: 'my-aws-account-cdk-2-accounts'
+#     regionName: 'us-east-1'
+#     scriptType: 'inline'
+#     inlineScript: |
+#       echo "Running cdk ls"
+#       cdk ls
+#   displayName: 'list cdk ls'
 
 # - task: AWSShellScript@1
 #   inputs:
