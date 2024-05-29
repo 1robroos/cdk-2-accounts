@@ -42,17 +42,17 @@ steps:
 #     awsSubCommand: 'list-stacks'
 #   displayName: 'aws cli list cfn stacks'
 
-- task: AWSShellScript@1
-  inputs:
-    awsCredentials: 'IAM-azuredevops-user'
-    #awsCredentials: 'AWS-SANDBOX'
-    regionName: 'eu-central-1'
-    scriptType: 'inline'
-    inlineScript: 'aws s3 ls'
-    # disableAutoCwd: true
-    # workingDirectory: '$(System.DefaultWorkingDirectory)'
-    # failOnStandardError: false
-  displayName: 'aws s3 ls'
+# - task: AWSShellScript@1
+#   inputs:
+#     awsCredentials: 'IAM-azuredevops-user'
+#     #awsCredentials: 'AWS-SANDBOX'
+#     regionName: 'eu-central-1'
+#     scriptType: 'inline'
+#     inlineScript: 'aws s3 ls'
+#     # disableAutoCwd: true
+#     # workingDirectory: '$(System.DefaultWorkingDirectory)'
+#     # failOnStandardError: false
+#   displayName: 'aws s3 ls'
 
 
 # - task: AWSShellScript@1
