@@ -6,7 +6,7 @@ trigger:
       - master
 
 variables:
-  system.debug: 'true'
+  system.debug: 'false'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -18,7 +18,14 @@ steps:
     regionName: 'eu-central-1'
     awsCommand: 'sts'
     awsSubCommand: 'get-caller-identity'
-  displayName: 'aws sts test2'
+  displayName: 'aws sts test3'
+# gives:
+#   {
+#     "UserId": "AIDA6DPCBMLV4PVAYJWRP",
+#     "Account": "969526043371",
+#     "Arn": "arn:aws:iam::969526043371:user/azuredevops"
+# }
+
 
 # - task: AWSShellScript@1
 #   inputs:
